@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  &_hide {
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  &__input {
+    display: flex;
+  }
+  &__btns {
+    display: flex;
+    justify-content: center;
+    margin-top: 250px;
+    &_active {
+      margin-top: 250px;
+    }
+  }
+}
+
+.time {
+  margin: 0 auto;
+  position: absolute;
+  width: 600px;
+  top: 50%;
+  left: 50%;
+  font-size: 10em;
+  line-height: 1;
+  white-space: normal;
+  transform: translate(-45%, -50%);
+  font-family: 'MyFont';
+  font-size: 10rem;
+  color: rgb(255, 255, 255);
+}

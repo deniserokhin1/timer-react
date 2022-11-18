@@ -1,0 +1,16 @@
+.btn {
+  padding: 10px;
+  width: 83px;
+  outline: none;
+  border: none;
+  background: #ff8400;
+  border-radius: 25px;
+  font-size: 17px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:not(:last-child) {
+  margin-right: 20px;
+}
+/*# sourceMappingURL=Button.module.css.map */
