@@ -4590,7 +4590,7 @@ var Timer = function Timer(_ref) {
         children: "\u041E\u0442\u043C\u0435\u043D\u0430"
       })]
     }) : '', !isShowControls && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      className: allTime === 0 ? [_timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time, _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_over].join(' ') : _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time,
+      className: allTime === 0 ? [_timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time, _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_over, _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_center].join(' ') : _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
         className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_box_center,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
@@ -5220,7 +5220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"wrapper":"pWFRQlfSMkdQiXF47x9h","wrapper_hide":"cuP762v8h0skw01g9jTc","wrapper__input":"QHD3RmHjFpFan8iIRhYe","wrapper__btns":"zOtHY3c0DAewkH3GFMXQ","wrapper__btns_active":"xWWOuNE8u9pz6pw3QLZH","time":"yIJlbJBptZMQxDwG9lYd","time_over":"cIDZ4qpGdoidAhphp0n0","time_box":"v0eDMAsZCKtlzriOYicd","time_box_center":"bUOoL59_b_OLKIfpagb1"});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"wrapper":"pWFRQlfSMkdQiXF47x9h","wrapper_hide":"cuP762v8h0skw01g9jTc","wrapper__input":"QHD3RmHjFpFan8iIRhYe","wrapper__btns":"zOtHY3c0DAewkH3GFMXQ","wrapper__btns_active":"xWWOuNE8u9pz6pw3QLZH","time":"yIJlbJBptZMQxDwG9lYd","time_over":"cIDZ4qpGdoidAhphp0n0","time_box":"v0eDMAsZCKtlzriOYicd","time_box_center":"bUOoL59_b_OLKIfpagb1","time_center":"_BW40Zmq2u7gGC1YKhgl"});
 
 /***/ }),
 
