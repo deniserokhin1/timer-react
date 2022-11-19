@@ -24,16 +24,13 @@
 
 .time {
   display: flex;
-  justify-content: center;
-  margin: 0 auto;
   position: absolute;
-  width: 600px;
   top: 50%;
-  left: 35%;
+  left: 50%;
   font-size: 10em;
   line-height: 1;
   white-space: normal;
-  transform: translate(-45%, -50%);
+  transform: translate(-50%, -50%);
   font-family: 'MyFont';
   font-size: 9rem;
   color: rgb(255, 255, 255);
@@ -59,9 +56,5 @@
   .time {
     width: 308px;
     font-size: 5rem;
-    left: 42%;
-    &_center {
-      left: 32%;
-    }
   }
 }
