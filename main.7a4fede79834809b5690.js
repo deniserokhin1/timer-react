@@ -4181,10 +4181,16 @@ var App = function App() {
     _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
     isClick = _useState12[0],
     setIsClick = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(0),
+    _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
+    widthScreen = _useState14[0],
+    setWidthScreen = _useState14[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setWidthScreen(window.innerWidth);
+  }, []);
   var toggleInputs = function toggleInputs(isShow) {
     setIsSHowInputs(isShow);
   };
-  var getTime = function getTime(value) {};
   var getData = function getData(leftTime, hours, minutes, seconds) {
     setLeftTime(leftTime);
     setAllTime(hours + minutes + seconds);
@@ -4199,7 +4205,7 @@ var App = function App() {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(antd__WEBPACK_IMPORTED_MODULE_10__["default"], {
         className: "progress",
         percent: leftPercent,
-        width: 700,
+        width: widthScreen < 800 ? 350 : 600,
         strokeWidth: 1.5,
         type: "circle",
         gapDegree: 0,
@@ -4339,9 +4345,6 @@ var Input = function Input(_ref) {
       });
     }
   };
-
-  // const arrayOfTime: string[] = []
-
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
     document.addEventListener('click', function () {
       setIsClick(false);
@@ -4478,14 +4481,10 @@ var Timer = function Timer(_ref) {
     _useState12 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState11, 2),
     isShowControls = _useState12[0],
     setIsShowControls = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
     _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
-    isZero = _useState14[0],
-    setIsZero = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-    _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
-    isPlay = _useState16[0],
-    setIsPlay = _useState16[1];
+    isPlay = _useState14[0],
+    setIsPlay = _useState14[1];
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
   var ringtone = new Audio('./assets/iphone-1.mp3');
   var _useTypedSelector = (0,_hooks_useSelector__WEBPACK_IMPORTED_MODULE_3__.useTypedSelector)(function (state) {
@@ -4509,7 +4508,6 @@ var Timer = function Timer(_ref) {
   var secMinutes = minutes * 60;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setAllTine(secInHours + secMinutes + seconds);
-    setIsZero(false);
   }, [hours, minutes, seconds]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getData(allTime, secInHours, secMinutes, seconds);
@@ -4547,7 +4545,6 @@ var Timer = function Timer(_ref) {
         break;
       case 'Отмена':
         ringtone.pause();
-        setIsZero(true);
         setIsPlay(false);
         setIsCansel(true);
         setIsCounting(false);
@@ -4593,13 +4590,22 @@ var Timer = function Timer(_ref) {
         children: "\u041E\u0442\u043C\u0435\u043D\u0430"
       })]
     }) : '', !isShowControls && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-      className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-        children: screenHours
-      }), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-        children: screenMinutes
-      }), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-        children: screenSeconds
+      className: allTime === 0 ? [_timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time, _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_over].join(' ') : _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_box_center,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          children: screenHours
+        })
+      }), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_box_center,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          children: screenMinutes
+        })
+      }), ":", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].time_box,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+          children: screenSeconds
+        })
       })]
     })]
   });
@@ -5214,7 +5220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // extracted by mini-css-extract-plugin
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"wrapper":"pWFRQlfSMkdQiXF47x9h","wrapper_hide":"cuP762v8h0skw01g9jTc","wrapper__input":"QHD3RmHjFpFan8iIRhYe","wrapper__btns":"zOtHY3c0DAewkH3GFMXQ","wrapper__btns_active":"xWWOuNE8u9pz6pw3QLZH","time":"yIJlbJBptZMQxDwG9lYd"});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"wrapper":"pWFRQlfSMkdQiXF47x9h","wrapper_hide":"cuP762v8h0skw01g9jTc","wrapper__input":"QHD3RmHjFpFan8iIRhYe","wrapper__btns":"zOtHY3c0DAewkH3GFMXQ","wrapper__btns_active":"xWWOuNE8u9pz6pw3QLZH","time":"yIJlbJBptZMQxDwG9lYd","time_over":"cIDZ4qpGdoidAhphp0n0","time_box":"v0eDMAsZCKtlzriOYicd","time_box_center":"bUOoL59_b_OLKIfpagb1"});
 
 /***/ }),
 
