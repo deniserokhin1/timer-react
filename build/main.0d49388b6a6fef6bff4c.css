@@ -26963,19 +26963,52 @@ div.ant-typography-edit-content.ant-typography-rtl {
 }
 
 .yIJlbJBptZMQxDwG9lYd {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0 auto;
   position: absolute;
   width: 600px;
   top: 50%;
-  left: 50%;
+  left: 35%;
   font-size: 10em;
   line-height: 1;
   white-space: normal;
   -webkit-transform: translate(-45%, -50%);
           transform: translate(-45%, -50%);
   font-family: 'MyFont';
-  font-size: 10rem;
+  font-size: 9rem;
   color: white;
+}
+
+.cIDZ4qpGdoidAhphp0n0 {
+  left: 16%;
+}
+
+.v0eDMAsZCKtlzriOYicd {
+  width: 150px;
+}
+
+.bUOoL59_b_OLKIfpagb1 {
+  width: 150px;
+  text-align: center;
+}
+
+@media (max-width: 799px) {
+  .zOtHY3c0DAewkH3GFMXQ {
+    margin-top: 175px;
+  }
+  .xWWOuNE8u9pz6pw3QLZH {
+    margin-top: 175px;
+  }
+  .yIJlbJBptZMQxDwG9lYd {
+    width: 308px;
+    font-size: 5rem;
+    left: 42%;
+  }
 }
 /*!*****************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/components/Input/Input.module.css ***!
@@ -26985,6 +27018,7 @@ div.ant-typography-edit-content.ant-typography-rtl {
   width: 90px;
   color: white;
   font-family: 'MyFont';
+  text-align: center;
   font-size: 5rem;
   line-height: 1;
   border: 1px solid gray;
@@ -27022,6 +27056,7 @@ div.ant-typography-edit-content.ant-typography-rtl {
 }
 
 .NlzbAPoP2uDWrhD9GglA {
+  text-align: center;
   cursor: pointer;
 }
 

@@ -144,7 +144,7 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
       {!isShowControls && (
         <div
           className={
-            allTime === 0 ? [cl.time, cl.time_over].join(' ') : cl.time
+            allTime === 0 ? [cl.time, cl.time_over, cl.time_center].join(' ') : cl.time
           }
         >
           <div className={cl.time_box_center}>
