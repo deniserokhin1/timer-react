@@ -34,7 +34,6 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
   const [allTime, setAllTine] = useState(0)
   const [isCounting, setIsCounting] = useState(false)
   const [isShowControls, setIsShowControls] = useState(true)
-  const [isZero, setIsZero] = useState(true)
   const [isPlay, setIsPlay] = useState(false)
   const dispatch = useDispatch()
 
@@ -62,7 +61,6 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
 
   useEffect(() => {
     setAllTine(secInHours + secMinutes + seconds)
-    setIsZero(false)
   }, [hours, minutes, seconds])
 
   useEffect(() => {
@@ -84,7 +82,7 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
 
   const calcHours = Math.floor(allTime / 3600)
   const calcMinutes = Math.floor((allTime - calcHours * 3600) / 60)
-  const calcSeconds = Math.floor(allTime - calcHours * 3600 - calcMinutes * 60)
+  let calcSeconds = Math.floor(allTime - calcHours * 3600 - calcMinutes * 60)
 
   const screenHours = getPadTime(calcHours)
   const screenMinutes = getPadTime(calcMinutes)
@@ -103,7 +101,6 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
         break
       case 'Отмена':
         ringtone.pause()
-        setIsZero(true)
         setIsPlay(false)
         setIsCansel(true)
         setIsCounting(false)
@@ -145,9 +142,22 @@ const Timer = ({ getData, setIsCansel, toggleInputs, isClick }: TimerProps) => {
         ''
       )}
       {!isShowControls && (
-        <div className={cl.time}>
-          <span>{screenHours}</span>:<span>{screenMinutes}</span>:
-          <span>{screenSeconds}</span>
+        <div
+          className={
+            allTime === 0 ? [cl.time, cl.time_over].join(' ') : cl.time
+          }
+        >
+          <div className={cl.time_box_center}>
+            <span>{screenHours}</span>
+          </div>
+          :
+          <div className={cl.time_box_center}>
+            <span>{screenMinutes}</span>
+          </div>
+          :
+          <div className={cl.time_box}>
+            <span>{screenSeconds}</span>
+          </div>
         </div>
       )}
     </div>

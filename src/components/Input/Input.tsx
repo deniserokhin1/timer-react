@@ -1,19 +1,9 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useMemo,
-  useReducer,
-  useState,
-} from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useSelector } from 'react-redux'
 import { useOutSide } from '../../hooks/useOutSide'
-import { initialState, reducer } from '../../hooks/useReducer'
 import { getPadTime } from '../../utils/getPadTime'
 import cl from './Input.module.css'
 
@@ -43,9 +33,7 @@ const Input = ({ isCancel, setIsCansel, setIsClick, type }: InputProps) => {
         payload: target.textContent,
       })
     }
-  }
-
-  // const arrayOfTime: string[] = []
+}
 
   useEffect(() => {
     document.addEventListener('click', () => {

@@ -1,13 +1,13 @@
 /* eslint-disable eslint-comments/disable-enable-pair */
 /* eslint-disable prettier/prettier */
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Progress } from 'antd'
 import './styles/styles.css'
 import 'antd/dist/antd.css'
 import Timer from './components/Timer/Timer'
 import cl from './components/Input/Input.module.css'
 import Input from './components/Input/Input'
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux'
 import { store } from './store'
 
 const App = () => {
@@ -17,12 +17,15 @@ const App = () => {
   const [isCansel, setIsCansel] = useState(false)
   const [isShowInputs, setIsSHowInputs] = useState(true)
   const [isClick, setIsClick] = useState(false)
+  const [widthScreen, setWidthScreen] = useState(0)
+
+  useEffect(() => {
+    setWidthScreen(window.innerWidth)
+  }, [])
 
   const toggleInputs = (isShow: boolean) => {
     setIsSHowInputs(isShow)
   }
-
-  const getTime = (value: string) => {}
 
   const getData = (
     leftTime: number,
@@ -40,49 +43,49 @@ const App = () => {
 
   return (
     <Provider store={store}>
-    <div className="div">
-      <Progress
-        className="progress"
-        percent={leftPercent}
-        width={700}
-        strokeWidth={1.5}
-        type="circle"
-        gapDegree={0}
-        showInfo={false}
-        status={'normal'}
-        style={{ color: 'white' }}
-        strokeColor={'#ff8502'}
-        trailColor={'#727272af'}
-      />
-      <Timer
-        getData={getData}
-        setIsCansel={setIsCansel}
-        toggleInputs={toggleInputs}
-        isClick={isClick}
-      />
-      {isShowInputs && (
-        <div className={cl.wrapper__input}>
-          <Input
-            isCancel={isCansel}
-            setIsCansel={setIsCansel}
-            setIsClick={setIsClick}
-            type='HOURS'
-          />
-          <Input
-            isCancel={isCansel}
-            setIsCansel={setIsCansel}
-            setIsClick={setIsClick}
-            type='MINUTES'
-          />
-          <Input
-            isCancel={isCansel}
-            setIsCansel={setIsCansel}
-            setIsClick={setIsClick}
-            type='SECONDS'
-          />
-        </div>
-      )}
-    </div>
+      <div className="div">
+        <Progress
+          className="progress"
+          percent={leftPercent}
+          width={widthScreen < 800 ? 350 : 600}
+          strokeWidth={1.5}
+          type="circle"
+          gapDegree={0}
+          showInfo={false}
+          status={'normal'}
+          style={{ color: 'white' }}
+          strokeColor={'#ff8502'}
+          trailColor={'#727272af'}
+        />
+        <Timer
+          getData={getData}
+          setIsCansel={setIsCansel}
+          toggleInputs={toggleInputs}
+          isClick={isClick}
+        />
+        {isShowInputs && (
+          <div className={cl.wrapper__input}>
+            <Input
+              isCancel={isCansel}
+              setIsCansel={setIsCansel}
+              setIsClick={setIsClick}
+              type="HOURS"
+            />
+            <Input
+              isCancel={isCansel}
+              setIsCansel={setIsCansel}
+              setIsClick={setIsClick}
+              type="MINUTES"
+            />
+            <Input
+              isCancel={isCansel}
+              setIsCansel={setIsCansel}
+              setIsClick={setIsClick}
+              type="SECONDS"
+            />
+          </div>
+        )}
+      </div>
     </Provider>
   )
 }

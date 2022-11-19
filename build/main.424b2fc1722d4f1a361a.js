@@ -4448,7 +4448,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var rootCl = [_timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper];
 var Timer = function Timer(_ref) {
   var getData = _ref.getData,
@@ -4483,15 +4482,24 @@ var Timer = function Timer(_ref) {
     _useState14 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState13, 2),
     isZero = _useState14[0],
     setIsZero = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+    _useState16 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState15, 2),
+    isPlay = _useState16[0],
+    setIsPlay = _useState16[1];
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useDispatch)();
-  var ringtone = new Audio('./');
-  console.log(ringtone);
+  var ringtone = new Audio('./assets/iphone-1.mp3');
   var _useTypedSelector = (0,_hooks_useSelector__WEBPACK_IMPORTED_MODULE_3__.useTypedSelector)(function (state) {
       return state.time;
     }),
     strHours = _useTypedSelector.strHours,
     strMinutes = _useTypedSelector.strMinutes,
     strSeconds = _useTypedSelector.strSeconds;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useMemo)(function () {
+    if (isPlay) {
+      ringtone.play();
+      ringtone.loop = true;
+    }
+  }, [isPlay]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setHours(Number(strHours));
     setMinutes(Number(strMinutes));
@@ -4501,14 +4509,15 @@ var Timer = function Timer(_ref) {
   var secMinutes = minutes * 60;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setAllTine(secInHours + secMinutes + seconds);
+    setIsZero(false);
   }, [hours, minutes, seconds]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     getData(allTime, secInHours, secMinutes, seconds);
-    if (allTime === 0) {
+    if (allTime === 0 && isCounting) {
+      setIsPlay(true);
       setIsCounting(false);
-      setIsZero(true);
     }
-  }, [allTime, hours, minutes, seconds]);
+  }, [allTime]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var interval = setInterval(function () {
       isCounting && setAllTine(function (allTime) {
@@ -4532,12 +4541,14 @@ var Timer = function Timer(_ref) {
         setIsShowControls(false);
         setIsCansel(false);
         toggleInputs(false);
-        setIsZero(false);
         break;
       case 'Пауза':
         setIsCounting(false);
         break;
       case 'Отмена':
+        ringtone.pause();
+        setIsZero(true);
+        setIsPlay(false);
         setIsCansel(true);
         setIsCounting(false);
         setIsShowControls(true);
@@ -4545,7 +4556,6 @@ var Timer = function Timer(_ref) {
         setHours(0);
         setMinutes(0);
         setSeconds(0);
-        setIsZero(true);
         dispatch({
           type: type
         });
@@ -4555,18 +4565,16 @@ var Timer = function Timer(_ref) {
   isClick ? rootCl.push(_timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper_hide) : rootCl.length = 1;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     className: rootCl.join(' '),
-    children: [isShowControls && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper__btns,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          clickHandler: clickHandler,
-          children: "\u0421\u0442\u0430\u0440\u0442"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          clickHandler: clickHandler,
-          children: "\u041E\u0442\u043C\u0435\u043D\u0430"
-        })]
-      })
-    }), isCounting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    children: [isShowControls && allTime !== 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper__btns,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        clickHandler: clickHandler,
+        children: "\u0421\u0442\u0430\u0440\u0442"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        clickHandler: clickHandler,
+        children: "\u041E\u0442\u043C\u0435\u043D\u0430"
+      })]
+    }) : '', isCounting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper__btns_active,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
         clickHandler: clickHandler,
@@ -4577,7 +4585,7 @@ var Timer = function Timer(_ref) {
       })]
     }) : !isShowControls ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: _timer_module_css__WEBPACK_IMPORTED_MODULE_6__["default"].wrapper__btns_active,
-      children: [!isZero && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      children: [allTime !== 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
         clickHandler: clickHandler,
         children: "\u0421\u0442\u0430\u0440\u0442"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Button_Button__WEBPACK_IMPORTED_MODULE_5__["default"], {
